@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/bootsnav.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- xsslider slider css -->
 
 
@@ -368,7 +368,7 @@
         }
         .nav> li{
             text-align: center;
-            width: 20%;
+            width: 16%;
         }
         .skills ul li{
             display: inline-flex;
@@ -378,9 +378,45 @@
             margin: 31px 20px;
             transition: all 0.3s ease 0s;
         }   
-        
+
+        .video-popup.reveal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            z-index:9
+        }
+
+        .video-popup .video-wrapper {
+            position: relative;
+            width: 80%;
+            padding-bottom: 45%;
+            z-index: 10
+        }
+
+        .video-popup .video-wrapper iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-popup.reveal .video-popup-closer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .5);
+            z-index: 9
+        } 
 
         </style>
+       
+
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -422,6 +458,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#home">Home</a></li>                    
                             <li><a href="#business">About</a></li>
+                            <li><a href="#product">Skill</a></li>
                             <li><a href="#Test">Portfolio</a></li>
                             <li><a href="#brand">Carrer</a></li>
                             <li><a href="#contact">Contact</a></li>
@@ -605,10 +642,7 @@
                             <div class="col-md-6">
                                 <div class="business_slid">
                                     <div class="business_img">
-                                        <video muted autoplay loop style="height: 368px;width: 550px;">
-                                            <source src="" type="video/mp4">
-                                            <strong>Your browser does not support the video tag.</strong>
-                                          </video>
+                                        <img src="https://user-images.githubusercontent.com/83701856/143183881-6a160f85-5546-402d-8018-9d84d1124cbe.png" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -622,8 +656,17 @@
 
                                      <p class="m-top-20"> 기술스텍: Java, JavaScript, HTML5, CSS, JSP, jquery, Oracle SQL, spring framework, Apache-Tomcat, Bootstrap 3.3.2</p>   
                                 </div>
-                                <div class="home_btns m-top-40">
+                                <div class="home_btns" style="float: left;">
                                     <a href="https://github.com/taeuklee/neuron_final" class="btn btn-primary m-top-20">Git hub 주소</a>
+                                </div>
+                                <div class="home_btns" >
+                                    <div class="popupVideo">
+                                        <a data-video="Cgs27FI1CfM"  class="btn btn-primary m-top-20">youtube영상 보기</a>
+                                    </div>
+                                    <div class="video-popup">
+                                        <div class="video-popup-closer"></div>
+                                    </div>
+                                      
                                 </div>
                             </div>
                         </div>
@@ -646,19 +689,25 @@
 
                                      <p class="m-top-20"> 기술스텍: Java, JavaScript, HTML5, CSS, JSP, jquery, Oracle SQL, spring framework, Apache-Tomcat, Bootstrap 3.3.2</p>   
                                 </div>
-                                <div class="home_btns m-top-40">
-                                    <a href="https://github.com/taeuklee/soolzip" class="btn btn-primary m-top-20">Git hub 주소</a>
+                                <div class="home_btns" style="float: left;">
+                                    <a href="https://github.com/taeuklee/neuron_final" class="btn btn-primary m-top-20">Git hub 주소</a>
+                                </div>
+                                <div class="home_btns" >
+                                    <div class="popupVideo">
+                                        <a data-video="AJxpwsu8A68"  class="btn btn-primary m-top-20">youtube영상 보기</a>
+                                    </div>
+                                    <div class="video-popup">
+                                        <div class="video-popup-closer"></div>
+                                    </div>
+                                      
                                 </div>
                             </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="business_slid">
-                                    <div class="business_img">
-                                        <video muted autoplay loop style="height: 368px;width: 550px;">
-                                            <source src="" type="video/mp4">
-                                            <strong>Your browser does not support the video tag.</strong>
-                                          </video>
+                                     <div class="business_img">
+                                        <img src="/assets/images/캡처.PNG" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -786,6 +835,16 @@
 
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/main.js"></script>
-
+        <script>
+            $(".popupVideo a").click(function() {
+            $(".video-popup").addClass("reveal"),
+            $(".video-popup .video-wrapper").remove(),
+            $(".video-popup").append("<div class='video-wrapper'><iframe width='560' height='315' src='https://youtube.com/embed/" + $(this).data("video") + "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
+            }),
+            $(".video-popup-closer").click(function() {
+            $(".video-popup .video-wrapper").remove(),
+            $(".video-popup").removeClass("reveal")
+            });
+        </script> 
     </body>
 </html>
